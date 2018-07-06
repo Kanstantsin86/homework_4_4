@@ -37,12 +37,14 @@ and open the template in the editor.
         $st = $dbh->prepare("SHOW TABLES");
         $st->execute();
         $tables = $st->fetchAll(PDO::FETCH_ASSOC);
-        var_dump($tables);
+        //var_dump($tables);
         
-        $q = $dbh->prepare("DESCRIBE ?");
+        
+        
+        /*$q = $dbh->prepare("DESCRIBE ?");
         $q->execute(array($table));
         $table_fields = $q->fetchAll(PDO::FETCH_COLUMN);
-        var_dump($table_fields);
+        var_dump($table_fields);*/
 
         
         
@@ -66,5 +68,12 @@ PRIMARY KEY (`id`)
     SHOW TABLES;//показать таблицы
 DESCRIBE table_name;*/
         ?>
+        <h2>Доступные таблицы текущей базы данныx:</h2>
+        <?php foreach( $tables as $value ){
+            foreach( $value as $val1 => $val2 ){
+                echo '<a href="tableInfo.php?val2='. $val2 .'">'. $val2 . '</a>';
+            }
+        } ?>
+        
     </body>
 </html>
